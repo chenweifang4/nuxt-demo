@@ -65,7 +65,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // '@nuxtjs/pwa',
+    '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content'
   ],
@@ -92,6 +92,12 @@ export default {
       modules: {
         localIdentName: '[local]--[Frida]_[hash:base64:4]'
       }
+    }
+  },
+  pwa: {
+    workbox: {
+      // skipWaiting: true,
+      // clientsClaim: true
     }
   }
 }
