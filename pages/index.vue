@@ -1,28 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
-      <h1 class="title">
-        nuxt-demo
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <h1>Home page</h1>
+      <h3>
+        <nuxt-link to="/about">
+          Go to Abount Page
+        </nuxt-link>
+      </h3>
     </div>
   </div>
 </template>
@@ -31,7 +15,7 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;
