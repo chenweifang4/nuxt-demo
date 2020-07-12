@@ -1,21 +1,20 @@
 <template>
-  <div class="main">
-    <div>
-      <h1>Home page</h1>
+  <div>
+    <h1>Home page</h1>
 
-      <nuxt-content :document="doc" />
+    <nuxt-content :document="doc" />
 
-      <p>
-        <nuxt-link to="/about">
-          Go to Abount Page
-        </nuxt-link>
-      </p>
-    </div>
+    <p>
+      <nuxt-link to="/about">
+        Go to Abount Page
+      </nuxt-link>
+    </p>
   </div>
 </template>
 
 <script>
 export default {
+  layout: 'main',
   async asyncData ({ $content, params }) {
     const doc = await $content('content').fetch()
 
