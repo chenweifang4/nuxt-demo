@@ -56,7 +56,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content'
   ],
@@ -72,8 +72,17 @@ export default {
   content: {},
   /*
   ** Build configuration
+  ** Nuxt.js lets you customize the webpack configuration for building your web application as you want.
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    /**
+     * reference: https://redonion.se/en/css-modules-in-nuxt-js/
+     */
+    cssModules: {
+      modules: {
+        localIdentName: '[local]--[Frida]_[hash:base64:4]'
+      }
+    }
   }
 }
