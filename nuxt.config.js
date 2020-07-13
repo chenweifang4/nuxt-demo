@@ -65,9 +65,9 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content'
+    // '@nuxt/content'
   ],
   /*
   ** Axios module configuration
@@ -92,14 +92,13 @@ export default {
       modules: {
         localIdentName: '[local]--[Frida]_[hash:base64:4]'
       }
-    }
+    },
+    publicPath: '/_nuxt/a/b/c'
   },
-  pwa: {
-    workbox: {
-      skipWaiting: true,
-      clientsClaim: true,
-      swURL: '/sw.js'
-      // publicPath: '/club/pgg_pcweb/v2'
-    }
+  workbox: {
+    skipWaiting: false,
+    clientsClaim: false,
+    swURL: 'sw.js'
+    // publicPath: '/club/pgg_pcweb/v2'
   }
 }

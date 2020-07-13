@@ -2,7 +2,7 @@
   <div>
     <h1>Home page</h1>
 
-    <nuxt-content :document="doc" />
+    <!-- <nuxt-content :document="doc" /> -->
 
     <p>
       <nuxt-link to="/about">
@@ -14,12 +14,12 @@
 
 <script>
 export default {
-  layout: 'main',
-  async asyncData ({ $content, params }) {
-    const doc = await $content('content').fetch()
+  layout: 'main'
+  // async asyncData ({ $content, params }) {
+  //   const doc = await $content('content').fetch()
 
-    return { doc }
-  }
+  //   return { doc }
+  // }
 }
 </script>
 

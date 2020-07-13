@@ -26,8 +26,8 @@ export default {
 
 <style lang="scss" module>
 .aboutGlobalScssVariable {
-  color: $white;
-  background-color: $green;
+  color: #ffffff;
+  background-color: #43976c;
   padding: 4px;
 }
 </style>
