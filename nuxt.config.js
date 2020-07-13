@@ -96,8 +96,10 @@ export default {
   },
   pwa: {
     workbox: {
-      // skipWaiting: true,
-      // clientsClaim: true
+      skipWaiting: true,
+      clientsClaim: true,
+      swURL: '/sw.js'
+      // publicPath: '/club/pgg_pcweb/v2'
     }
   }
 }
