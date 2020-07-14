@@ -13,6 +13,7 @@
             ],
             "program": "${workspaceRoot}/node_modules/nuxt/bin/nuxt.js",
             "cwd": "${workspaceFolder}",
+            "args": ["build"]
         }
     ]
 }
