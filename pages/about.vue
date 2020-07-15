@@ -13,6 +13,12 @@
         Return to Home Page
       </nuxt-link>
     </p>
+
+    <div>
+      <a>
+        <img src="https://img.yzcdn.cn/vant/tree.jpg">
+      </a>
+    </div>
   </div>
 </template>
 

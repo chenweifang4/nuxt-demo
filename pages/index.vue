@@ -9,6 +9,12 @@
         Go to Abount Page
       </nuxt-link>
     </p>
+
+    <div>
+      <a>
+        <img src="https://img.yzcdn.cn/vant/leaf.jpg">
+      </a>
+    </div>
   </div>
 </template>
 

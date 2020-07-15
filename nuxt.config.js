@@ -1,4 +1,4 @@
-
+const path = require('path')
 export default {
   /*
   ** Nuxt rendering mode
@@ -65,7 +65,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    // '@nuxtjs/pwa',
+    '~/modules/workbox'
     // Doc: https://github.com/nuxt/content
     // '@nuxt/content'
   ],
@@ -93,12 +94,34 @@ export default {
         localIdentName: '[local]--[Frida]_[hash:base64:4]'
       }
     },
-    publicPath: '/_nuxt/a/b/c'
+    // publicPath: '//local.egam.qq.com/a/b/c'
   },
   workbox: {
-    skipWaiting: false,
-    clientsClaim: false,
-    swURL: 'sw.js'
+    webpackPlugin: {
+      swDest: path.resolve('static', 'sw.js'),
+      skipWaiting: true,
+      clientsClaim: true,
+      include: [/\.js$/],
+      runtimeCaching: [
+        {
+          urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+          handler: 'cacheFirst',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }
+      ]
+    },
+    swURL: '/sw.js',
+    swScope: '/',
+    // preCaching: [],
+    // _runtimeCaching: [],
+    // _runtimeCaching: [{
+    //   urlPattern: /\.js$/,
+    //   handler: 'staleWhileRevalidate'
+    // }],
     // publicPath: '/club/pgg_pcweb/v2'
   }
 }
