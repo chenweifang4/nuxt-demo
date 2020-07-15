@@ -1482,9 +1482,9 @@
     stack-trace "0.0.10"
 
 "@simonwep/pickr@~1.7.0":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@simonwep/pickr/-/pickr-1.7.1.tgz#7bdcccca2041967434f9d7e18720e85598601008"
-  integrity sha512-ftbskrPKAkRLYVj8IhV4Bn86g16It9Uq/p4G0FdjRz36pKKjW0JdxdDWDIVuAev0Urg8604Ho98js6JmjXdiZQ==
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@simonwep/pickr/-/pickr-1.7.2.tgz#99c73a3852633f749c8c187c82627a448b76b1ef"
+  integrity sha512-XHmQKS1k1gUvB4kOj9W3DTpT5SQWDovSm3KuOtmlkHmezkF/WzyraPIk+vwroxESdugfqanJZFvgdj9lzHcEKw==
   dependencies:
     core-js "^3.6.5"
     nanopop "^1.3.0"
@@ -1514,9 +1514,9 @@
     "@types/unist" "*"
 
 "@types/node@*":
-  version "14.0.22"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.22.tgz#23ea4d88189cec7d58f9e6b66f786b215eb61bdc"
-  integrity sha512-emeGcJvdiZ4Z3ohbmw93E/64jRzUHAItSHt8nF7M4TGgQTiWqFVGB8KNpLGFmUHmHLvjvBgFwVlqNcq+VuGv9g==
+  version "14.0.23"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.23.tgz#676fa0883450ed9da0bb24156213636290892806"
+  integrity sha512-Z4U8yDAl5TFkmYsZdFPdjeMa57NOvnaf1tljHzhouaPEp7LCj2JKkejpI1ODviIAQuW4CcQmxkQ77rnLsOOoKw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -2607,12 +2607,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001097:
-  version "1.0.30001097"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001097.tgz#1129c40c9f5ee3282158da08fd915d301f4a9bd8"
-  integrity sha512-TeuSleKt/vWXaPkLVFqGDnbweYfq4IaZ6rUugFf3rWY6dlII8StUZ8Ddin0PkADfgYZ4wRqCdO2ORl4Rn5eZIA==
-
-caniuse-lite@^1.0.30000910:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000910, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001097:
   version "1.0.30001099"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001099.tgz#540118fcc6842d1fde62f4ee5521d1ec6afdb40e"
   integrity sha512-sdS9A+sQTk7wKoeuZBN/YMAHVztUfVnjDi4/UV3sDE8xoh7YR12hKW+pIdB3oqKGwr9XaFL2ovfzt9w8eUI5CA==
@@ -5671,6 +5666,13 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
+json-stable-stringify@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/json-stable-stringify/-/json-stable-stringify-1.0.1.tgz#9a759d39c5f2ff503fd5300646ed445f88c4f9af"
+  integrity sha1-mnWdOcXy/1A/1TAGRu1EX4jE+a8=
+  dependencies:
+    jsonify "~0.0.0"
+
 json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
@@ -5708,6 +5710,11 @@ jsonfile@^4.0.0:
   integrity sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jsonify@~0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
+  integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
 
 jsprim@^1.2.2:
   version "1.4.1"
@@ -9089,9 +9096,9 @@ strip-indent@^1.0.1:
     get-stdin "^4.0.1"
 
 strip-json-comments@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.0.tgz#7638d31422129ecf4457440009fba03f9f9ac180"
-  integrity sha512-e6/d0eBu7gHtdCqFt0xJr642LdToM5/cN4Qb9DbHjVx1CP5RyeM+zH7pbecEmDv/lBqb0QH+6Uqq75rxFPkM0w==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
+  integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
 style-resources-loader@^1.2.1:
   version "1.3.3"
@@ -9585,9 +9592,9 @@ unist-util-stringify-position@^2.0.0:
     "@types/unist" "^2.0.2"
 
 unist-util-visit-parents@^3.0.0:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-3.0.2.tgz#d4076af3011739c71d2ce99d05de37d545f4351d"
-  integrity sha512-yJEfuZtzFpQmg1OSCyS9M5NJRrln/9FbYosH3iW0MG402QbdbaB8ZESwUv9RO6nRfLAKvWcMxCwdLWOov36x/g==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-3.1.0.tgz#4dd262fb9dcfe44f297d53e882fc6ff3421173d5"
+  integrity sha512-0g4wbluTF93npyPrp/ymd3tCDTMnP0yo2akFD2FIBAYXq/Sga3lwaU1D8OYKbtpioaI6CkDcQ6fsMnmtzt7htw==
   dependencies:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
@@ -10197,6 +10204,14 @@ workbox-sw@^3.6.3:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-3.6.3.tgz#278ea4c1831b92bbe2d420da8399176c4b2789ff"
   integrity sha512-IQOUi+RLhvYCiv80RP23KBW/NTtIvzvjex28B8NW1jOm+iV4VIu3VXKXTA6er5/wjjuhmtB28qEAUqADLAyOSg==
+
+workbox-webpack-plugin@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-3.4.1.tgz#e91a4ab1e427b7d46afb7c185e99ca172e306d26"
+  integrity sha512-dwIaEJK27xbGKMQv1sbSjywxhfX74nMW1zgUP9XUtpFeykH0e5Dm1j7wbQezXU3mFoaO7xuzqwGpAFxMKc0xMA==
+  dependencies:
+    json-stable-stringify "^1.0.1"
+    workbox-build "^3.4.1"
 
 worker-farm@^1.7.0:
   version "1.7.0"
