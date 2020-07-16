@@ -99,6 +99,7 @@ export default {
   workbox: {
     webpackPlugin: {
       swDest: path.resolve('static', 'sw.js'),
+      importWorkboxFrom: 'local',
       skipWaiting: true,
       clientsClaim: true,
       include: [/\.js$/],
@@ -114,7 +115,7 @@ export default {
         }
       ]
     },
-    swURL: '/sw.js',
+    swURL: 'sw.js',
     swScope: '/',
     // preCaching: [],
     // _runtimeCaching: [],
