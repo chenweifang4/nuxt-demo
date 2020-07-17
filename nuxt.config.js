@@ -1,5 +1,9 @@
 const path = require('path')
+
+const isDev = process.env.NODE_ENV === 'development'
+
 export default {
+  dev: isDev,
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -106,7 +110,7 @@ export default {
       runtimeCaching: [
         {
           urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
-          handler: 'cacheFirst',
+          handler: 'staleWhileRevalidate',
           options: {
             cacheableResponse: {
               statuses: [0, 200]
