@@ -74,7 +74,10 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // '@nuxtjs/pwa',
-    '~/modules/workbox'
+    '~/modules/workbox',
+    '~/modules/pwa-manifest-icon',
+    '~/modules/pwa-manifest',
+    // '@nuxtjs/pwa/lib/manifest/module.js',
     // Doc: https://github.com/nuxt/content
     // '@nuxt/content'
   ],
@@ -124,43 +127,80 @@ export default {
     },
     // publicPath: '//local.egam.qq.com/a/b/c'
   },
-  workbox: {
-    webpackPlugin: {
-      swDest: path.resolve('static', 'sw.js'),
-      // importWorkboxFrom: 'local',
-      inlineWorkboxRuntime: true,
-      skipWaiting: true,
-      clientsClaim: true,
-      include: [/\.js\?max_age\.*/],
-      runtimeCaching: [
-        {
-          urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheableResponse: {
-              statuses: [0, 200]
+  /*
+  ** Overwrite's generated manifest values
+  */
+  // manifest: {
+  //   name: 'NUXT-DEMO',
+  //   short_name: 'ND',
+  //   display: 'standalone'
+  // },
+  // workbox: {
+  //   swDest: path.resolve('static', 'sw.js'),
+  //   skipWaiting: true,
+  //   clientsClaim: true,
+  //   // include: [/\.js\?max_age\.*/],
+
+  //   runtimeCaching: [
+  //     {
+  //       urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+  //       handler: 'StaleWhileRevalidate',
+  //       options: {
+  //         cacheableResponse: {
+  //           statuses: [0, 200]
+  //         }
+  //       }
+  //     },
+  //     {
+  //       urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+  //       handler: 'StaleWhileRevalidate',
+  //       options: {
+  //         cacheableResponse: {
+  //           statuses: [0, 200]
+  //         }
+  //       }
+  //     }
+  //   ]
+  // }
+  pwa: {
+    workbox: {
+      webpackPlugin: {
+        swDest: path.resolve('static', 'sw.js'),
+        // importWorkboxFrom: 'local',
+        inlineWorkboxRuntime: true,
+        skipWaiting: true,
+        clientsClaim: true,
+        include: [/\.js\?max_age\.*/],
+        runtimeCaching: [
+          {
+            urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
             }
           }
-        },
-        {
-          urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        }
-      ]
+        ]
+      },
+      swURL: 'sw.js',
+      swScope: '/', 
     },
-    swURL: 'sw.js',
-    swScope: '/',
-    // preCaching: [],
-    // _runtimeCaching: [],
-    // _runtimeCaching: [{
-    //   urlPattern: /\.js$/,
-    //   handler: 'StaleWhileRevalidate'
-    // }],
-    // publicPath: '/club/pgg_pcweb/v2'
+    manifest: {
+      name: 'NUXT-DEMO'
+    },
+    icon: {
+      // iconSrc: '/static/',
+      // iconFileName: 'icon.copy.png'
+    }
   }
 }

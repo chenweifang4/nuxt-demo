@@ -3,7 +3,7 @@ const path = require('path')
 const fixUrl = url => url.replace(/\/\//g, '/').replace(':/', '://')
 
 module.exports = function (options) {
-    const workbox = this.options.workbox
+    const workbox = this.options.pwa.workbox
     const workboxWebpackPlugin = workbox.webpackPlugin
     this.extendBuild((config, { isClient, isDev }) => {
         if (isClient && !isDev) {
