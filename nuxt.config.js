@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === 'development'
 export default {
   server: {
     host: '127.0.0.1',
-    port: '3000',
+    port: '3001',
   },
   dev: isDev,
   /*
@@ -125,7 +125,7 @@ export default {
           return isDev ? '[path][name].[ext]' : 'videos/[hash:7].[ext]?max_age=31536000'
       }
     },
-    // publicPath: '//local.egam.qq.com/a/b/c'
+    publicPath: '/a/b/c'
   },
   /*
   ** Overwrite's generated manifest values
@@ -196,11 +196,15 @@ export default {
       swScope: '/', 
     },
     manifest: {
-      name: 'NUXT-DEMO'
+      name: 'NUXT-DEMO',
+      short_name: 'ND'
     },
     icon: {
+      // publicPath: '/d/e/f',
+      // iconSrc: '//img.yzcdn.cn/vant/leaf.jpg',
       // iconSrc: '/static/',
-      // iconFileName: 'icon.copy.png'
+      iconFileName: '03_egame_symbol.png'
+      // iconFileName: 'leaf.jpg'
     }
   }
 }
