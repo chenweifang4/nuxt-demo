@@ -5,9 +5,11 @@
     <!-- <nuxt-content :document="doc" /> -->
 
     <p>
-      <nuxt-link to="/about">
+      <!-- <nuxt-link to="/about">
         Go to Abount Page
-      </nuxt-link>
+      </nuxt-link> -->
+
+      <a href="/about" target="_blank">Go to Abount Page</a>
     </p>
 
     <div>
@@ -21,12 +23,20 @@
 
 <script>
 export default {
-  layout: 'main'
+  layout: 'main',
   // async asyncData ({ $content, params }) {
   //   const doc = await $content('content').fetch()
-
   //   return { doc }
   // }
+  mounted () {
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+      console.log('registrations ', registrations)
+      for(let registration of registrations) {
+        registration.unregister()
+      }
+    })
+  }
+
 }
 </script>
 

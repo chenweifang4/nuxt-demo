@@ -3,6 +3,10 @@ const path = require('path')
 const isDev = process.env.NODE_ENV === 'development'
 
 export default {
+  server: {
+    host: '127.0.0.1',
+    port: '3000',
+  },
   dev: isDev,
   /*
   ** Nuxt rendering mode
@@ -98,19 +102,49 @@ export default {
         localIdentName: '[local]--[Frida]_[hash:base64:4]'
       }
     },
+    filenames: {
+      app: ({ isDev, isModern }) => {
+          return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
+      },
+      chunk: ({ isDev, isModern }) => {
+          return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
+      },
+      css: ({ isDev }) => {
+          return isDev ? '[name].css' : '[contenthash].css?max_age=31536000'
+      },
+      img: ({ isDev }) => {
+          return isDev ? '[path][name].[ext]' : 'img/[hash:7].[ext]?max_age=31536000'
+      },
+      font: ({ isDev }) => {
+          return isDev ? '[path][name].[ext]' : 'fonts/[hash:7].[ext]?max_age=31536000'
+      },
+      video: ({ isDev }) => {
+          return isDev ? '[path][name].[ext]' : 'videos/[hash:7].[ext]?max_age=31536000'
+      }
+    },
     // publicPath: '//local.egam.qq.com/a/b/c'
   },
   workbox: {
     webpackPlugin: {
       swDest: path.resolve('static', 'sw.js'),
-      importWorkboxFrom: 'local',
+      // importWorkboxFrom: 'local',
+      inlineWorkboxRuntime: true,
       skipWaiting: true,
       clientsClaim: true,
-      include: [/\.js$/],
+      include: [/\.js\?max_age\.*/],
       runtimeCaching: [
         {
           urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
-          handler: 'staleWhileRevalidate',
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+        {
+          urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+          handler: 'StaleWhileRevalidate',
           options: {
             cacheableResponse: {
               statuses: [0, 200]
@@ -125,7 +159,7 @@ export default {
     // _runtimeCaching: [],
     // _runtimeCaching: [{
     //   urlPattern: /\.js$/,
-    //   handler: 'staleWhileRevalidate'
+    //   handler: 'StaleWhileRevalidate'
     // }],
     // publicPath: '/club/pgg_pcweb/v2'
   }
