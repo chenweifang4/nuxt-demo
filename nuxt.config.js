@@ -30,7 +30,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'manifest', href: '/_nuxt/manifest.json' }
     ]
   },
   /*
@@ -124,8 +125,8 @@ export default {
       video: ({ isDev }) => {
         return isDev ? '[path][name].[ext]' : 'videos/[hash:7].[ext]?max_age=31536000'
       }
-    },
-    publicPath: '/a/b/c'
+    }
+    // publicPath: '/a/b/c'
   },
   /*
   ** Overwrite's generated manifest values
@@ -203,7 +204,7 @@ export default {
       // publicPath: '/d/e/f',
       // iconSrc: '//img.yzcdn.cn/vant/leaf.jpg',
       // iconSrc: '/static/',
-      iconFileName: '03_egame_symbol.png'
+      iconFileName: 'nuxt.png'
       // iconFileName: 'leaf.jpg'
     }
   }
