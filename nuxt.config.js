@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === 'development'
 export default {
   server: {
     host: '127.0.0.1',
-    port: '3001',
+    port: '3001'
   },
   dev: isDev,
   /*
@@ -76,7 +76,7 @@ export default {
     // '@nuxtjs/pwa',
     '~/modules/workbox',
     '~/modules/pwa-manifest-icon',
-    '~/modules/pwa-manifest',
+    '~/modules/pwa-manifest'
     // '@nuxtjs/pwa/lib/manifest/module.js',
     // Doc: https://github.com/nuxt/content
     // '@nuxt/content'
@@ -107,22 +107,22 @@ export default {
     },
     filenames: {
       app: ({ isDev, isModern }) => {
-          return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
+        return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
       },
       chunk: ({ isDev, isModern }) => {
-          return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
+        return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
       },
       css: ({ isDev }) => {
-          return isDev ? '[name].css' : '[contenthash].css?max_age=31536000'
+        return isDev ? '[name].css' : '[contenthash].css?max_age=31536000'
       },
       img: ({ isDev }) => {
-          return isDev ? '[path][name].[ext]' : 'img/[hash:7].[ext]?max_age=31536000'
+        return isDev ? '[path][name].[ext]' : 'img/[hash:7].[ext]?max_age=31536000'
       },
       font: ({ isDev }) => {
-          return isDev ? '[path][name].[ext]' : 'fonts/[hash:7].[ext]?max_age=31536000'
+        return isDev ? '[path][name].[ext]' : 'fonts/[hash:7].[ext]?max_age=31536000'
       },
       video: ({ isDev }) => {
-          return isDev ? '[path][name].[ext]' : 'videos/[hash:7].[ext]?max_age=31536000'
+        return isDev ? '[path][name].[ext]' : 'videos/[hash:7].[ext]?max_age=31536000'
       }
     },
     publicPath: '/a/b/c'
@@ -193,7 +193,7 @@ export default {
         ]
       },
       swURL: 'sw.js',
-      swScope: '/', 
+      swScope: '/'
     },
     manifest: {
       name: 'NUXT-DEMO',
