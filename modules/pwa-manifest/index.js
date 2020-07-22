@@ -1,12 +1,14 @@
 const path = require('path')
 const fs = require('fs')
-const PwaManifestWebpackPlugin = require('@nuxtjs/pwa/lib/manifest/module.js')
+const nuxtjsPwaVersion = require('@nuxtjs/pwa/package.json').version
+const isOldNuxtjsPwaVersion = nuxtjsPwaVersion === '2.0.8'
+const PwaManifestWebpackPlugin = isOldNuxtjsPwaVersion ? require('@nuxtjs/manifest') : require('@nuxtjs/pwa/lib/manifest/module.js')
 
 module.exports = function () {
   const { pwa = {} } = this.options
   const { manifest } = pwa
   const { manifestName = 'manifest.json' } = manifest
-  PwaManifestWebpackPlugin.call(this, pwa)
+  PwaManifestWebpackPlugin.call(this, isOldNuxtjsPwaVersion ? manifest : pwa)
 
   this.options.build.plugins.push({
     apply (compiler) {

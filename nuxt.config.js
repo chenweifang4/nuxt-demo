@@ -6,7 +6,7 @@ const isDev = process.env.NODE_ENV === 'development'
 export default {
   server: {
     host: '127.0.0.1',
-    port: '3001'
+    port: '3002'
   },
   dev: isDev,
   /*
@@ -208,6 +208,7 @@ export default {
       // iconSrc: '//img.yzcdn.cn/vant/leaf.jpg',
       // iconSrc: '/static/',
       iconFileName: 'egame.png'
+      // sizes: [512]
       // iconFileName: 'leaf.jpg'
     }
   }

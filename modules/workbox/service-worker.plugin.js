@@ -9,8 +9,8 @@ if ('serviceWorker' in navigator) {
   }
 
   setTimeout(() => {
-    console.log('3000 后自定取消注册 ', 3000)
-    pwaUtils.unregister()
+    // console.log('3000 后自定取消注册 ', 3000)
+    // pwaUtils.unregister()
   }, 3000)
 } else {
   pwaUtils.report(2)
