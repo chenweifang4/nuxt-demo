@@ -1,3 +1,4 @@
+// eslint-disable-next-line nuxt/no-cjs-in-config
 const path = require('path')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -175,20 +176,22 @@ export default {
         runtimeCaching: [
           {
             urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
-            handler: 'StaleWhileRevalidate',
+            // handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
+              // cacheableResponse: {
+              //   statuses: [0, 200]
+              // }
             }
           },
           {
             urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
-            handler: 'StaleWhileRevalidate',
+            // handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
+              // cacheableResponse: {
+              //   statuses: [0, 200]
+              // }
             }
           }
         ]
@@ -204,7 +207,7 @@ export default {
       // publicPath: '/d/e/f',
       // iconSrc: '//img.yzcdn.cn/vant/leaf.jpg',
       // iconSrc: '/static/',
-      iconFileName: 'nuxt.png'
+      iconFileName: 'egame.png'
       // iconFileName: 'leaf.jpg'
     }
   }
