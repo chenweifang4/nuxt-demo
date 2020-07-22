@@ -1,12 +1,18 @@
+import pwaUtils from '@/util/pwa.utils.js'
+
 if ('serviceWorker' in navigator) {
-  console.log('Hello from service-worker.plugin.js');
-  navigator.serviceWorker.register('<%= options.swURL %>', {
-      scope: '<%= options.swScope %>'
-  }).then(function (registration) {
-      window.$sw = registration;
-  }).catch(function (error) {
-      console.error('Service worker registration failed:', error);
-  })
+  const bool = typeof pwaUtils.enable === 'undefined' || pwaUtils.enable
+  if (bool) {
+    pwaUtils.register('<%= options.swURL %>', '<%= options.swScope %>')
+  } else {
+    pwaUtils.unregister()
+  }
+
+  setTimeout(() => {
+    console.log('3000 后自定取消注册 ', 3000)
+    pwaUtils.unregister()
+  }, 3000)
 } else {
-  console.error('Service workers are not supported.');
+  pwaUtils.report(2)
+  console.warn('Service workers are not supported.')
 }
