@@ -18,16 +18,23 @@
 
     <div>
       <a>
-        <img 
+        <img
           v-for="img in imgs"
           :key="img"
-          :src="img">
+          :src="img"
+        >
         <!-- <img src="https://img.yzcdn.cn/vant/tree.jpg">
         <img src="https://egame.gtimg.cn/club/pgg_pcweb/v2/img/578a64c.png?max_age=31536000" alt="">
         <img src="https://egame.gtimg.cn/club/pgg_pcweb/v2/img/f8191ba.png?max_age=31536000" alt="">
         <img src="https://egame.gtimg.cn/club/pgg_pcweb/v2/img/f538f0c.png?max_age=31536000" alt=""> -->
       </a>
     </div>
+
+    <p>
+      <button @click="handleClick">
+        CLICK ME
+      </button>
+    </p>
   </div>
 </template>
 
@@ -51,6 +58,12 @@ export default {
         'https://egame.gtimg.cn/club/pgg_pcweb/v2/img/f538f0c.png?max_age=31536000'
       )
     }, 1000)
+  },
+
+  methods: {
+    handleClick () {
+      console.log('Hello Click')
+    }
   }
 }
 </script>

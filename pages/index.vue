@@ -12,6 +12,12 @@
       <a href="/about" target="_blank">Go to Abount Page</a>
     </p>
 
+    <p>
+      <button @click="handleClick">
+        CLICK ME
+      </button>
+    </p>
+
     <div>
       <a>
         <!-- <img src="https://img.yzcdn.cn/vant/leaf.jpg"> -->
@@ -35,6 +41,12 @@ export default {
     //     registration.unregister()
     //   }
     // })
+  },
+
+  methods: {
+    handleClick () {
+      console.log('Hello Click')
+    }
   }
 
 }
