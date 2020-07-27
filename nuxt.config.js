@@ -179,9 +179,9 @@ export default {
             // handler: 'StaleWhileRevalidate',
             handler: 'CacheFirst',
             options: {
-              // cacheableResponse: {
-              //   statuses: [0, 200]
-              // }
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
             }
           },
           {
@@ -189,9 +189,9 @@ export default {
             // handler: 'StaleWhileRevalidate',
             handler: 'CacheFirst',
             options: {
-              // cacheableResponse: {
-              //   statuses: [0, 200]
-              // }
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
             }
           }
         ]
