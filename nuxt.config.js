@@ -76,7 +76,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // '@nuxtjs/pwa',
-    '~/modules/workbox',
+    '~/modules/pwa-workbox',
     '~/modules/pwa-manifest-icon',
     '~/modules/pwa-manifest'
     // '@nuxtjs/pwa/lib/manifest/module.js',
