@@ -1,7 +1,7 @@
 import pwaUtils from '@/util/pwa.utils.js'
 
 if ('serviceWorker' in navigator) {
-  // 如果需要清除缓存，那么就
+  // 是否需要清除缓存
   if (pwaUtils.shouldClearCacheStorage) {
     pwaUtils.clearCache()
   }
