@@ -1,5 +1,19 @@
+const isQueryExist = q => q ? !!~location?.search?.indexOf(q) : false
+
 const pwaUtils = {
   enable: undefined,
+
+  shouldClearCacheStorage: isQueryExist('clearCacheStorage'),
+
+  shouldNotRegisterServiceWorker: isQueryExist('unRegisterServiceWorker'),
+
+  clearCache () {
+    caches.keys().then((cacheNames) => {
+      cacheNames.forEach((cacheName) => {
+        caches.delete(cacheName)
+      })
+    })
+  },
 
   report (status) {
     // status 注册状态 0失败 1成功 2不支持
