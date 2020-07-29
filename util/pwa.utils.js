@@ -1,11 +1,24 @@
-const isQueryExist = q => q ? !!~location?.search?.indexOf(q) : false
-
 const pwaUtils = {
   enable: undefined,
 
-  shouldClearCacheStorage: isQueryExist('clearCacheStorage'),
+  isQueryExist (q) {
+    return q ? !!~window?.location?.search?.indexOf(q) : false
+  },
 
-  shouldNotRegisterServiceWorker: isQueryExist('unRegisterServiceWorker'),
+  /**
+   * 通过 url 带上 clearCacheStorage 参数来判断是否清除缓存
+   */
+  shouldClearCacheStorage () {
+    return this.isQueryExist('clearCacheStorage')
+  },
+
+  /**
+   * 通过 url 带上 unRegisterServiceWorker 参数，可以直接取消 sw 的注册
+   * 方便调试
+   */
+  shouldNotRegisterServiceWorker () {
+    return this.isQueryExist('unRegisterServiceWorker')
+  },
 
   clearCache () {
     caches.keys().then((cacheNames) => {

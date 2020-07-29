@@ -2,14 +2,14 @@ import pwaUtils from '@/util/pwa.utils.js'
 
 if ('serviceWorker' in navigator) {
   // 是否需要清除缓存
-  if (pwaUtils.shouldClearCacheStorage) {
+  if (pwaUtils.shouldClearCacheStorage()) {
     pwaUtils.clearCache()
   }
 
   const bool = (
     typeof pwaUtils.enable === 'undefined' ||
     pwaUtils.enable
-  ) && !pwaUtils.shouldNotRegisterServiceWorker
+  ) && !pwaUtils.shouldNotRegisterServiceWorker()
 
   if (bool) {
     pwaUtils.register('<%= options.swURL %>', '<%= options.swScope %>')
