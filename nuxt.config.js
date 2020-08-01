@@ -75,10 +75,10 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // '@nuxtjs/pwa',
-    '~/modules/pwa-workbox',
-    '~/modules/pwa-manifest-icon',
-    '~/modules/pwa-manifest'
+    // '@nuxtjs/pwa'
+    '~/modules/pwa-workbox'
+    // '~/modules/pwa-manifest-icon',
+    // '~/modules/pwa-manifest'
     // '@nuxtjs/pwa/lib/manifest/module.js',
     // Doc: https://github.com/nuxt/content
     // '@nuxt/content'
@@ -165,14 +165,47 @@ export default {
   //   ]
   // }
   pwa: {
+    // dev: true,
     workbox: {
+      // start test
+      // dev: true,
+      // swDest: path.resolve('static', 'sw.js'),
+      // // importWorkboxFrom: 'local',
+      // inlineWorkboxRuntime: true,
+      // skipWaiting: true,
+      // clientsClaim: true,
+      // include: [/\.js\?max_age\.*/],
+      // runtimeCaching: [
+      //   {
+      //     urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+      //     // handler: 'StaleWhileRevalidate',
+      //     handler: 'CacheFirst',
+      //     options: {
+      //       cacheableResponse: {
+      //         statuses: [0, 200]
+      //       }
+      //     }
+      //   },
+      //   {
+      //     urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+      //     // handler: 'StaleWhileRevalidate',
+      //     handler: 'CacheFirst',
+      //     options: {
+      //       cacheableResponse: {
+      //         statuses: [0, 200]
+      //       }
+      //     }
+      //   }
+      // ]
+      // end test
+      // start actual
       webpackPlugin: {
         swDest: path.resolve('static', 'sw.js'),
         // importWorkboxFrom: 'local',
         inlineWorkboxRuntime: true,
         skipWaiting: true,
         clientsClaim: true,
-        include: [/\.js\?max_age\.*/],
+        include: [/\.js\?max_age\.*/, /\.js$/],
         runtimeCaching: [
           {
             urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
@@ -198,6 +231,7 @@ export default {
       },
       swURL: 'sw.js',
       swScope: '/'
+      // end actual
     },
     manifest: {
       name: 'NUXT-DEMO',

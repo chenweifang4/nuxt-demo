@@ -1,14 +1,29 @@
 const path = require('path')
+const fs = require('fs')
 const { GenerateSW } = require('workbox-webpack-plugin')
 const fixUrl = url => url.replace(/\/\//g, '/').replace(':/', '://')
 
 module.exports = function (options) {
   const workbox = this.options.pwa.workbox
   const workboxWebpackPlugin = workbox.webpackPlugin
-  this.extendBuild((config, { isClient, isDev }) => {
-    if (isClient && !isDev) {
+  this.extendBuild((config, { isClient }) => {
+    if (isClient) {
       config.plugins.push(
-        new GenerateSW(workboxWebpackPlugin)
+        new GenerateSW(workboxWebpackPlugin),
+        {
+          apply (compiler) {
+            compiler.hooks.emit.tap('gen-sw', (compilation) => {
+              const { assets } = compilation
+              const swKey = (Object.keys(assets).filter((key) => {
+                return key.includes('sw.js')
+              }) || [])[0]
+              const swDest = workboxWebpackPlugin.swDest
+              const swData = (assets[swKey] || {})._value || ''
+
+              fs.writeFileSync(swDest, swData, 'utf8')
+            })
+          }
+        }
       )
     }
   })
