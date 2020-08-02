@@ -83,6 +83,9 @@ dist
 # Service worker
 sw.*
 
+# Manifest.json
+manifest.json
+
 # macOS
 .DS_Store
 
