@@ -32,7 +32,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'manifest', href: '/_nuxt/manifest.json' }
+      { rel: 'manifest', href: isDev ? 'manifest.json' : '/_nuxt/manifest.json' }
     ]
   },
   /*
@@ -76,9 +76,9 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // '@nuxtjs/pwa'
-    '~/modules/pwa-workbox'
-    // '~/modules/pwa-manifest-icon',
-    // '~/modules/pwa-manifest'
+    '~/modules/pwa-workbox',
+    '~/modules/pwa-manifest-icon',
+    '~/modules/pwa-manifest'
     // '@nuxtjs/pwa/lib/manifest/module.js',
     // Doc: https://github.com/nuxt/content
     // '@nuxt/content'
