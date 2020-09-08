@@ -2,24 +2,53 @@
   <div>
     <h1>Home page</h1>
 
-    <nuxt-content :document="doc" />
+    <!-- <nuxt-content :document="doc" /> -->
 
     <p>
-      <nuxt-link to="/about">
+      <!-- <nuxt-link to="/about">
         Go to Abount Page
-      </nuxt-link>
+      </nuxt-link> -->
+
+      <a href="/about" target="_blank">Go to Abount Page</a>
     </p>
+
+    <p>
+      <button @click="handleClick">
+        CLICK ME
+      </button>
+    </p>
+
+    <div>
+      <a>
+        <!-- <img src="https://img.yzcdn.cn/vant/leaf.jpg"> -->
+        <img src="https://img.yzcdn.cn/vant/tree.jpg">
+      </a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   layout: 'main',
-  async asyncData ({ $content, params }) {
-    const doc = await $content('content').fetch()
+  // async asyncData ({ $content, params }) {
+  //   const doc = await $content('content').fetch()
+  //   return { doc }
+  // }
+  mounted () {
+    // navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    //   console.log('registrations ', registrations)
+    //   for(let registration of registrations) {
+    //     registration.unregister()
+    //   }
+    // })
+  },
 
-    return { doc }
+  methods: {
+    handleClick () {
+      console.log('Hello Click')
+    }
   }
+
 }
 </script>
 

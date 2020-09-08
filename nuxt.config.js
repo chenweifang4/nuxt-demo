@@ -1,5 +1,14 @@
+// eslint-disable-next-line nuxt/no-cjs-in-config
+const path = require('path')
+
+const isDev = process.env.NODE_ENV === 'development'
 
 export default {
+  server: {
+    host: '127.0.0.1',
+    port: '3002'
+  },
+  dev: isDev,
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -22,7 +31,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'manifest', href: isDev ? 'manifest.json' : '/_nuxt/manifest.json' }
     ]
   },
   /*
@@ -65,9 +75,13 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa'
+    '~/modules/pwa-workbox',
+    '~/modules/pwa-manifest-icon',
+    '~/modules/pwa-manifest'
+    // '@nuxtjs/pwa/lib/manifest/module.js',
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content'
+    // '@nuxt/content'
   ],
   /*
   ** Axios module configuration
@@ -92,14 +106,144 @@ export default {
       modules: {
         localIdentName: '[local]--[Frida]_[hash:base64:4]'
       }
+    },
+    filenames: {
+      app: ({ isDev, isModern }) => {
+        return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
+      },
+      chunk: ({ isDev, isModern }) => {
+        return isDev ? `${isModern ? 'modern-' : ''}[name].js` : '[chunkhash].js?max_age=31536000'
+      },
+      css: ({ isDev }) => {
+        return isDev ? '[name].css' : '[contenthash].css?max_age=31536000'
+      },
+      img: ({ isDev }) => {
+        return isDev ? '[path][name].[ext]' : 'img/[hash:7].[ext]?max_age=31536000'
+      },
+      font: ({ isDev }) => {
+        return isDev ? '[path][name].[ext]' : 'fonts/[hash:7].[ext]?max_age=31536000'
+      },
+      video: ({ isDev }) => {
+        return isDev ? '[path][name].[ext]' : 'videos/[hash:7].[ext]?max_age=31536000'
+      }
     }
+    // publicPath: '/a/b/c'
   },
+  /*
+  ** Overwrite's generated manifest values
+  */
+  // manifest: {
+  //   name: 'NUXT-DEMO',
+  //   short_name: 'ND',
+  //   display: 'standalone'
+  // },
+  // workbox: {
+  //   swDest: path.resolve('static', 'sw.js'),
+  //   skipWaiting: true,
+  //   clientsClaim: true,
+  //   // include: [/\.js\?max_age\.*/],
+
+  //   runtimeCaching: [
+  //     {
+  //       urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+  //       handler: 'StaleWhileRevalidate',
+  //       options: {
+  //         cacheableResponse: {
+  //           statuses: [0, 200]
+  //         }
+  //       }
+  //     },
+  //     {
+  //       urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+  //       handler: 'StaleWhileRevalidate',
+  //       options: {
+  //         cacheableResponse: {
+  //           statuses: [0, 200]
+  //         }
+  //       }
+  //     }
+  //   ]
+  // }
   pwa: {
+    // dev: true,
     workbox: {
-      skipWaiting: true,
-      clientsClaim: true,
-      swURL: '/sw.js'
-      // publicPath: '/club/pgg_pcweb/v2'
+      // start test
+      // dev: true,
+      // swDest: path.resolve('static', 'sw.js'),
+      // // importWorkboxFrom: 'local',
+      // inlineWorkboxRuntime: true,
+      // skipWaiting: true,
+      // clientsClaim: true,
+      // include: [/\.js\?max_age\.*/],
+      // runtimeCaching: [
+      //   {
+      //     urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+      //     // handler: 'StaleWhileRevalidate',
+      //     handler: 'CacheFirst',
+      //     options: {
+      //       cacheableResponse: {
+      //         statuses: [0, 200]
+      //       }
+      //     }
+      //   },
+      //   {
+      //     urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+      //     // handler: 'StaleWhileRevalidate',
+      //     handler: 'CacheFirst',
+      //     options: {
+      //       cacheableResponse: {
+      //         statuses: [0, 200]
+      //       }
+      //     }
+      //   }
+      // ]
+      // end test
+      // start actual
+      webpackPlugin: {
+        swDest: path.resolve('static', 'sw.js'),
+        // importWorkboxFrom: 'local',
+        inlineWorkboxRuntime: true,
+        skipWaiting: true,
+        clientsClaim: true,
+        include: [/\.js\?max_age\.*/, /\.js$/],
+        runtimeCaching: [
+          {
+            urlPattern: /https:\/\/img\.yzcdn\.cn\/\.*/,
+            // handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
+            options: {
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /https:\/\/egame\.gtimg\.cn\/\.*/,
+            // handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
+            options: {
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ]
+      },
+      swURL: 'sw.js',
+      swScope: '/'
+      // end actual
+    },
+    manifest: {
+      name: 'NUXT-DEMO',
+      short_name: 'ND'
+    },
+    icon: {
+      // publicPath: '/d/e/f',
+      // iconSrc: '//img.yzcdn.cn/vant/leaf.jpg',
+      // iconSrc: '/static/',
+      iconFileName: 'egame.png'
+      // sizes: [512]
+      // iconFileName: 'leaf.jpg'
     }
   }
 }
