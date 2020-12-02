@@ -13,8 +13,9 @@
             ],
             "program": "${workspaceRoot}/node_modules/nuxt/bin/nuxt.js",
             "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
             "args": [
-                "build"
+                "dev"
             ]
         }
     ]

@@ -4,26 +4,22 @@
 
     <!-- <nuxt-content :document="doc" /> -->
 
-    <p>
-      <!-- <nuxt-link to="/about">
-        Go to Abount Page
-      </nuxt-link> -->
-
-      <a href="/about" target="_blank">Go to Abount Page</a>
-    </p>
-
-    <p>
-      <button @click="handleClick">
-        CLICK ME
-      </button>
-    </p>
-
     <div>
       <a>
         <!-- <img src="https://img.yzcdn.cn/vant/leaf.jpg"> -->
         <img src="https://img.yzcdn.cn/vant/tree.jpg">
       </a>
     </div>
+
+    <p>
+      <a-button>
+        <nuxt-link to="/about">
+          Go to Abount Page
+        </nuxt-link>
+      </a-button>
+
+      <!-- <a href="/about" target="_blank">Go to Abount Page</a> -->
+    </p>
   </div>
 </template>
 
@@ -53,4 +49,7 @@ export default {
 </script>
 
 <style scoped>
+p {
+  margin: 20px 0px;
+}
 </style>
