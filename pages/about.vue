@@ -20,7 +20,16 @@
     </div> -->
 
     <CommentItem />
-    <!-- <div
+    <!-- <div class="MyComponent">
+      <a-button @click="editModeActive = true">
+        Activate edit mode
+      </a-button>
+      <LazyHydrate never :trigger-hydration="editModeActive">
+        <CommentItem22/>
+      </LazyHydrate>
+    </div> -->
+    <!-- <CommentItem2></CommentItem2> -->
+    <div
       v-observe-visibility="{
         callback: visibilityChanged,
         once: true,
@@ -28,21 +37,19 @@
       }"
     >
       <CommentItem3 v-if="isVisible" />
-    </div> -->
-    <div>
-      <LazyHydrate when-visible>
-        <CommentItem2
-          v-if="hydrated"
-          slot-scope="{ hydrated }"
-        />
-      </LazyHydrate>
     </div>
-    <LazyHydrate when-visible>
+    <!-- <LazyHydrate when-visible>
+      <CommentItem22
+        v-if="hydrated"
+        slot-scope="{ hydrated }"
+      />
+    </LazyHydrate> -->
+    <!-- <LazyHydrate when-visible>
       <CommentItem3
         v-if="hydrated"
         slot-scope="{ hydrated }"
       />
-    </LazyHydrate>
+    </LazyHydrate> -->
   </div>
 </template>
 
@@ -52,7 +59,8 @@ import CommentItem from '@/components/comment/CommentItem.vue'
 // import CommentItem3 from '@/components/comment/CommentItem3.vue'
 import lazyLoadComponent from '@/util/lazy-load-component.js'
 
-import LazyHydrate, { hydrateWhenVisible } from 'vue-lazy-hydration';
+import LazyHydrate, { hydrateWhenVisible } from '@/components/hydrator/index.js';
+// import LazyHydrate, { hydrateWhenVisible } from 'vue-lazy-hydration';
 // import SkeletonBox from '@/components/SkeletonBox.vue'
 
 import Vue from 'vue'
@@ -72,11 +80,11 @@ export default {
     //   componentFactory: () => import(/* webpackChunkName: "CommentItem2" */ '@/components/comment/CommentItem2.vue'),
     //   loading: SkeletonBox
     // }),
-    CommentItem2: () => import(/* webpackChunkName: "CommentItem2" */ '@/components/comment/CommentItem2.vue'),
-    // CommentItem2: hydrateWhenVisible(
-    //   () => import(/* webpackChunkName: "CommentItem2" */ '@/components/comment/CommentItem2.vue'),
-    //   { observerOptions: { rootMargin: '100px' } },
-    // ),
+    CommentItem2: hydrateWhenVisible(
+      () => import(/* webpackChunkName: "CommentItem2" */ '@/components/comment/CommentItem2.vue'),
+      // { observerOptions: { rootMargin: '100px' } },
+    ),
+    CommentItem22: () => import(/* webpackChunkName: "CommentItem2" */ '@/components/comment/CommentItem2.vue'),
     CommentItem3: () => import(/* webpackChunkName: "CommentItem3" */ '@/components/comment/CommentItem3.vue'),
     LazyHydrate
   },
@@ -85,7 +93,9 @@ export default {
       imgs: [
         'https://img.yzcdn.cn/vant/cat.jpeg'
       ],
-      isVisible: false
+      isVisible: false,
+      editModeActive: false
+      // hydrated: true
     }
   },
   mounted () {

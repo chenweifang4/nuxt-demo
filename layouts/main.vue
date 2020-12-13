@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <nuxt />
+    <nuxt class="nuxt"/>
   </div>
 </template>
 
@@ -8,5 +8,10 @@
 .main {
   border: 20px solid;
   padding: 20px;
+  overflow: hidden;
+}
+.nuxt {
+  max-width: 100%;
+  overflow: hidden;
 }
 </style>
